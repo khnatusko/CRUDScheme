@@ -5,17 +5,17 @@
             <form @submit.prevent="onUpdateForm">
                 <div class="form-group">
                     <label>Name</label>
-                    <input type="text" class="form-control" v-model="user.name" required>
+                    <input type="text" class="form-control" v-model="dish.name" required>
                 </div>
 
                 <div class="form-group">
                     <label>Email</label>
-                    <input type="email" class="form-control" v-model="user.email" required>
+                    <input type="text" class="form-control" v-model="dish.description" required>
                 </div>
 
                 <div class="form-group">
                     <label>Phone</label>
-                    <input type="text" class="form-control" v-model="user.phone" required>
+                    <input type="text" class="form-control" v-model="dish.price" required>
                 </div>
 
                 <div class="form-group">
@@ -32,14 +32,14 @@
     export default {
         data() {
             return {
-                user: {
+                dish: {
                 }
             }
         },
         created() {
-            let dbRef = db.collection('users').doc(this.$route.params.id);
+            let dbRef = db.collection('dishes').doc(this.$route.params.id);
             dbRef.get().then((doc) => {
-                this.user = doc.data();
+                this.dish = doc.data();
             }).catch((error) => {
                 console.log(error)
             })
@@ -47,8 +47,8 @@
         methods: {
             onUpdateForm(event) {
                 event.preventDefault()
-                db.collection('users').doc(this.$route.params.id)
-                .update(this.user).then(() => {
+                db.collection('dishes').doc(this.$route.params.id)
+                .update(this.dish).then(() => {
                     console.log("User successfully updated!");
                     this.$router.push('/list')
                 }).catch((error) => {

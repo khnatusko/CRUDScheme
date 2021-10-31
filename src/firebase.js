@@ -23,7 +23,7 @@ var firebaseConfig = {
   const auth = firebase.auth()
   const storage = firebase.storage()
 
-  const usersCollection = db.collection('users')
+  const dishesCollection = db.collection('dishes')
 
   export {
       db,

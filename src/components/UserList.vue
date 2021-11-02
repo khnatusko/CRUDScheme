@@ -1,11 +1,12 @@
 <template>
+<div class="card">
     <div class="row">
         <div class="col-md-12">
             <table class="table table-striped">
                 <thead>
                     <tr>
                         <th>Name</th>
-                        <th>Description</th>
+                        <th>Category</th>
                         <th>Price</th>
                         <th>Actions</th>
                     </tr>
@@ -13,7 +14,7 @@
                 <tbody>
                     <tr v-for="dish in Dishes" :key="dish.key">
                         <td>{{ dish.name }}</td>
-                        <td>{{ dish.description }}</td>
+                        <td>{{ dish.category }}</td>
                         <td> {{dish.price | formatPrice }}</td>
                         <td>
                             <router-link :to="{name: 'Edit', params: { id: dish.key }}" class="btn btn-primary">Edit
@@ -24,6 +25,7 @@
                 </tbody>
             </table>
         </div>
+    </div>
     </div>
 </template>
 
@@ -43,7 +45,7 @@
                     this.Dishes.push({
                         key: doc.id,
                         name: doc.data().name,
-                        description: doc.data().description,
+                        category: doc.data().category,
                         price: doc.data().price
                     })
                 });
@@ -74,10 +76,10 @@
     }
 </script>
 
-<style>
-    .btn-primary {
-        margin-right: 12px;
-    }
+<style scoped>
+   .row{
+       margin-right: 0;
+   }
     td{
         background-color: white;
     }

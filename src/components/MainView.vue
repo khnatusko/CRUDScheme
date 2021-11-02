@@ -3,7 +3,7 @@
     <b-carousel
       fade
       indicators
-      
+      :interval="4000"
       img-width="700"
       img-height="300"
       style="border: solid 10px;"
@@ -13,6 +13,7 @@
       <b-carousel-slide img-src="https://bielsk.eu/images/stories/2021/07/lipiec3/14ciast.jpg" caption="Witajcie w CafeRaj! :3" text="Rozgoście się i spędzcie miło czas! :3"></b-carousel-slide>
       <b-carousel-slide img-src="https://bielsk.eu/images/stories/2019/10/pazdziernik1/27ciasto.jpg" caption="Witajcie w CafeRaj! :3" text="Rozgoście się i spędzcie miło czas! :3" ></b-carousel-slide>
     </b-carousel>
+
   </b-container>
 </template>
 

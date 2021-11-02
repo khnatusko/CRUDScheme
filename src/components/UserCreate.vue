@@ -7,18 +7,18 @@
                 <div class="form-group">
                     <label>Name</label>
                     <input type="text" class="form-control" v-model="dish.name" required>
-                </div>
+                </div><br>
 
                 <div class="form-group">
-                    <label>Description</label>
-                    <input type="text"  class="form-control" v-model="dish.description" required>
+                    <label>Kategorie</label>
+                    <b-form-select v-model="dish.category" :options="options" style="width:100%"></b-form-select>
+                        <div class="mt-3">Wybrana kategoria: <strong>{{ dish.category }}</strong></div>
                 </div>
+                
 
                 <div class="form-group">
-                    <label>Price</label>
-                    
-                    <input type="number" class="form-control" v-model="dish.price" required>
-                    
+                    <label>Price</label>                   
+                    <input type="number" class="form-control" v-model="dish.price" min="1" required>                    
                 </div><br>
 
                 <div class="form-group py-2">
@@ -37,7 +37,12 @@
         data() {
             return {
                 dish: {
-                }
+                },
+                options: [
+                    {value: null, text: 'Please select an option' },
+                    {value: 'Napoje', text: 'Napoje'},
+                    {value: 'Danie główne', text: 'Danie główne'}
+                ]
             }
         },
         methods: {
@@ -46,7 +51,7 @@
                 db.collection('dishes').add(this.dish).then(() => {
                     alert("User successfully created!");
                     this.dish.name = ''
-                    this.dish.description = ''
+                    this.dish.category = ''
                     this.dish.price = ''
                 }).catch((error) => {
                     console.log(error);
@@ -65,7 +70,7 @@ body{
 }
 .col-md-5{
     background-color: darkslategrey;
-    border: 2px solid black;
+    border: 10px solid black;
     width: 50%;
     margin: 0 auto; 
     float: none; 
